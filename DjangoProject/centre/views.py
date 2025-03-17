@@ -1,29 +1,34 @@
 from django.shortcuts import render, redirect
 from .models import Student, Teacher
-from .forms import StudentForm, TeacherForm  # Asegúrate de tener forms.py
-
+from .forms import StudentForm, TeacherForm
 
 def index(request):
     return render(request, 'centre/index.html')
 
-
 def students(request):
     students = Student.objects.all()
-    form = StudentForm(request.POST or None)
-
-    if request.method == "POST" and form.is_valid():
-        form.save()
-        return redirect('students')  # Redirige a la lista de estudiantes
-
-    return render(request, 'centre/students.html', {'students': students, 'form': form})
-
+    return render(request, 'centre/students.html', {'students': students})
 
 def teachers(request):
     teachers = Teacher.objects.all()
-    form = TeacherForm(request.POST or None)
+    return render(request, 'centre/teachers.html', {'teachers': teachers})
 
-    if request.method == "POST" and form.is_valid():
-        form.save()
-        return redirect('teachers')  # Redirige a la lista de profesores
+def add_students(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('students')  # Redirige a la lista de estudiantes después de agregar
+    else:
+        form = StudentForm()
+    return render(request, 'centre/add_students.html', {'form': form})
 
-    return render(request, 'centre/teachers.html', {'teachers': teachers, 'form': form})
+def add_teachers(request):
+    if request.method == "POST":
+        form = TeacherForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('teachers')  # Redirige a la lista de profesores después de agregar
+    else:
+        form = TeacherForm()
+    return render(request, 'centre/add_teachers.html', {'form': form})

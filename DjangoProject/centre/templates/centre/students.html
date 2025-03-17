@@ -26,14 +26,9 @@
             <td>{{ student.modules }}</td>
         </tr>
         {% endfor %}
-    </table>
+    </table><br>
 
-    <h2>Añadir Estudiante</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    <a href="{% url 'add_students' %}">Agregar Estudiante</a>
 
     <a href="{% url 'index' %}">Volver</a>
 </body>
