@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profesor</title>
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Profesores tic BCN</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Curso</th>
+            <th>Tutor</th>
+        </tr>
+        {% for teacher in teachers %}
+        <tr>
+            <td>{{ teacher.id }}</td>
+            <td>{{ teacher.first_name }}</td>
+            <td>{{ teacher.last_name1 }} {{ teacher.last_name2 }}</td>
+            <td>{{ teacher.email }}</td>
+            <td>{{ teacher.courses }}</td>
+            <td>{% if teacher.tutor %}Sí{% else %}No{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Añadir Profesor</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a href="{% url 'index' %}">Volver</a>
+</body>
+</html>
