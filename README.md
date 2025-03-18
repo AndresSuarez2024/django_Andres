@@ -22,4 +22,9 @@
 
 ## Teachers añadido correctamente
 
-![uvicorn](img/teachersAnadido.PNG)
+![teachersAdd](img/teachersAnadido.PNG)
+
+## Tablas de la base de datos
+
+![bbddTables](img/tablabbdd.PNG)
+
