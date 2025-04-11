@@ -11,19 +11,13 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Curso</th>
-            <th>Tutor</th>
+            <th>Información</th>
         </tr>
         {% for teacher in teachers %}
         <tr>
             <td>{{ teacher.id }}</td>
             <td>{{ teacher.first_name }}</td>
-            <td>{{ teacher.last_name1 }} {{ teacher.last_name2 }}</td>
-            <td>{{ teacher.email }}</td>
-            <td>{{ teacher.courses }}</td>
-            <td>{% if teacher.tutor %}Sí{% else %}No{% endif %}</td>
+            <td><a href="{% url 'teachers_detail' teacher.id %}">Detalle</a></td>
         </tr>
         {% endfor %}
     </table><br>

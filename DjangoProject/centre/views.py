@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Student, Teacher
 from .forms import StudentForm, TeacherForm
 
@@ -9,9 +9,17 @@ def students(request):
     students = Student.objects.all()
     return render(request, 'centre/students.html', {'students': students})
 
+def students_detail(request, id):
+    student = get_object_or_404(Student, pk=id)
+    return render(request, 'centre/students_detail.html', {'student': student})
+
 def teachers(request):
     teachers = Teacher.objects.all()
     return render(request, 'centre/teachers.html', {'teachers': teachers})
+
+def teachers_detail(request, id):
+    teacher = get_object_or_404(Teacher, pk=id)
+    return render(request, 'centre/teachers_detail.html', {'teacher': teacher})
 
 def add_students(request):
     if request.method == "POST":

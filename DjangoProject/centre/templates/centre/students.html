@@ -11,19 +11,14 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Email</th>
-            <th>Curso</th>
-            <th>Modulo</th>
+            <th>Informacion</th>
+
         </tr>
         {% for student in students %}
         <tr>
             <td>{{ student.id }}</td>
             <td>{{ student.first_name }}</td>
-            <td>{{ student.last_name1 }} {{ student.last_name2 }}</td>
-            <td>{{ student.email }}</td>
-            <td>{{ student.course }}</td>
-            <td>{{ student.modules }}</td>
+            <td><a href="{% url 'students_detail' student.id %}">Detalle</a></td>
         </tr>
         {% endfor %}
     </table><br>
