@@ -18,7 +18,7 @@ def teachers(request):
     return render(request, 'centre/teachers.html', {'teachers': teachers})
 
 def teachers_detail(request, id):
-    teacher = get_object_or_404(Teacher, pk=id)
+    teacher = Teacher.objects.get(pk=id)
     return render(request, 'centre/teachers_detail.html', {'teacher': teacher})
 
 def add_students(request):
