@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Centre</title>
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>CENTRO TIC BARCELONA</h1>
+    <nav>
+        <a href="{% url 'students' %}">Alumnos</a>
+        <a href="{% url 'teachers' %}">Profesores</a>
+    </nav>
+</body>
+</html>

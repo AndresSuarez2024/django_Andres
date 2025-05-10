@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Profesor</title>
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <h1>Detalles del Profesor</h1>
+    <p><strong>ID:</strong> {{ teacher.id }}</p>
+    <p><strong>Nombre:</strong> {{ teacher.first_name }}</p>
+    <p><strong>Apellidos:</strong> {{ teacher.last_name1 }} {{ teacher.last_name2 }}</p>
+    <p><strong>Email:</strong> {{ teacher.email }}</p>
+    <p><strong>Cursos:</strong> {{ teacher.courses }}</p>
+    <p><strong>Tutor:</strong> {% if teacher.tutor %}Sí{% else %}No{% endif %}</p>
+    <a href="{% url 'teachers' %}">Volver a la lista</a>
+</body>
+</html>

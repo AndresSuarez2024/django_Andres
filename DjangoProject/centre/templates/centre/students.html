@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alumnos</title>
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Alumnos tic BCN</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Informacion</th>
+
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.first_name }}</td>
+            <td><a href="{% url 'students_detail' student.id %}">Detalle</a></td>
+        </tr>
+        {% endfor %}
+    </table><br>
+
+    <a href="{% url 'add_students' %}">Agregar Estudiante</a>
+
+    <a href="{% url 'index' %}">Volver</a>
+</body>
+</html>
